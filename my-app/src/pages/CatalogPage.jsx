@@ -16,10 +16,8 @@ function CatalogPage({ albums, onAddToCart }) {
   return (
     <div className="catalog-container">
       <header className="catalog-hero">
-        <h1>Handcrafted Functional Stoneware</h1>
-        <p>
-          Sustainable ceramics shaped by hand for intentional daily rituals.
-        </p>
+        <h1>Vinyls for Purchase</h1>
+        <p>Made by indie artist. Grab yours today!</p>
       </header>
 
       <div className="filter-bar">
