@@ -37,10 +37,10 @@ const CheckoutPage = ({ cart, onClearCart }) => {
   // When user purchases items
   if (isSubmitted) {
     return (
-      <div className="checkout-sucess">
-        <h2> Your Order was placed sucessfully 🎉 </h2>
+      <div className="checkout-success">
+        <h2> Your Order was placed successfully 🎉 </h2>
         <p>
-          THank you, {formData.fullName}. A confirmation email is sent to{" "}
+          Thank you! {formData.fullName}. A confirmation email is sent to{" "}
           {formData.email}. Happy Shopping!
         </p>
         <Link className="btn btn-primary" to="/">
@@ -64,7 +64,7 @@ const CheckoutPage = ({ cart, onClearCart }) => {
   //
   return (
     <div className="checkout-container">
-      <h1> Checkout and Order Confrimation </h1>
+      <h1> Checkout and Order Confirmation </h1>
       <div className="checkout-grid">
         {/* {FORM ELEMENTS} */}
         <form onSubmit={handleSubmit} className="checkout-form">
@@ -92,7 +92,7 @@ const CheckoutPage = ({ cart, onClearCart }) => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="fullName"> Shipping Address *</label>
+            <label htmlFor="shippingAddress"> Shipping Address *</label>
             <input
               type="text"
               name="shippingAddress"
@@ -103,7 +103,7 @@ const CheckoutPage = ({ cart, onClearCart }) => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="fullName"> Zip Code *</label>
+            <label htmlFor="zipCode"> Zip Code *</label>
             <input
               type="text"
               name="zipCode"
@@ -125,7 +125,7 @@ const CheckoutPage = ({ cart, onClearCart }) => {
             {cart.map((item) => (
               <li key={item.id} className="summary-row">
                 <span>
-                  {item.name} &times; {item.quantity}
+                  {item.title} &times; {item.quantity}
                 </span>
                 <span>${(item.price * item.quantity).toFixed(2)}</span>
               </li>
@@ -133,12 +133,12 @@ const CheckoutPage = ({ cart, onClearCart }) => {
           </ul>
           <div className="summary-row">
             <span>Subtotal:</span> <span>${subtotal.toFixed(2)}</span>
-            <div className="summary-row">
-              <span>Estimated Tax (6%):</span> <span>${taxes.toFixed(2)}</span>
-            </div>
-            <div className="summary-row total-row">
-              <span>Total:</span> <span>${total.toFixed(2)}</span>
-            </div>
+          </div>
+          <div className="summary-row">
+            <span>Estimated Tax (6%):</span> <span>${taxes.toFixed(2)}</span>
+          </div>
+          <div className="summary-row total-row">
+            <span>Total:</span> <span>${total.toFixed(2)}</span>
           </div>
         </aside>
       </div>

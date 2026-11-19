@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-const AlbumDetailPage = ({ albums, onAddtoCart }) => {
-  const { albumsId } = useParams();
+const AlbumDetailPage = ({ albums, onAddToCart }) => {
+  const { albumId } = useParams();
   const [qty, setQty] = useState(1);
 
-  const album = albums.find((a) => a.id === albumsId);
+  const album = albums.find((a) => a.id === albumId);
 
   if (!album) {
     return (
       <div className="detail-error">
-        <h2>Product Not Found</h2>
+        <h2>Album Not Found</h2>
         <Link className="btn btn-secondary" to="/">
           Return To Main Catalog
         </Link>
@@ -20,16 +20,16 @@ const AlbumDetailPage = ({ albums, onAddtoCart }) => {
   return (
     <div className="detail-container">
       <nav className="breadcrumb">
-        <Link to="/">Catalog</Link> &gt; <span>{album.name}</span>
+        <Link to="/">Catalog</Link> &gt; <span>{album.title}</span>
       </nav>
 
       <div className="detail-grid">
-        <img src={album.image} alt={album.name} className="detail-img" />
+        <img src={album.image} alt={album.title} className="detail-img" />
 
         <div className="detail-info">
-          <span className="album-category">{album.category}</span>
-          <h1 className="detail-title">{album.name}</h1>
-          <p className="detail-price">{album.price.toFixed(2)}</p>
+          <span className="album-genre">{album.genre}</span>
+          <h1 className="detail-title">{album.title}</h1>
+          <p className="detail-price">${album.price.toFixed(2)}</p>
           <p className="detail-desc">{album.description}</p>
           <div className="stock-tag">
             {album.stock > 0
@@ -53,7 +53,7 @@ const AlbumDetailPage = ({ albums, onAddtoCart }) => {
             </div>
             <button
               className="btn btn-primary"
-              onClick={() => onAddtoCart(album, qty)}
+              onClick={() => onAddToCart(album, qty)}
             >
               Add {qty} to cart
             </button>

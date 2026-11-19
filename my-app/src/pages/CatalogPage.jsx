@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import AlbumCard from "../components/AlbumCard";
 
 function CatalogPage({ albums, onAddToCart }) {
-  const categories = ["All", "Mugs", "Planters", "Plates"];
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const genres = ["All", "Jazz", "Electronic", "Rock", "Classical"];
+  const [selectedGenre, setSelectedGenre] = useState("All");
 
   //    put a safety check - what happens if data is bad or missing
-  const validProducts = products || [];
+  const validAlbums = albums || [];
 
-  const filteredProducts =
-    selectedCategory === "All"
-      ? validProducts
-      : validProducts.filter((p) => p.category === selectedCategory);
+  const filteredAlbums =
+    selectedGenre === "All"
+      ? validAlbums
+      : validAlbums.filter((p) => p.genre === selectedGenre);
 
   return (
     <div className="catalog-container">
@@ -22,26 +22,21 @@ function CatalogPage({ albums, onAddToCart }) {
         </p>
       </header>
 
-      {/**this is how to comment INSIDE THE RETURN stmnt */}
       <div className="filter-bar">
-        {categories.map((cat) => {
+        {genres.map((cat) => (
           <button
             key={cat}
-            className={`filter-pill ${selectedCategory === cat ? "active" : ""}`}
-            onClick={() => setSelectedCategory(cat)}
+            className={`filter-pill ${selectedGenre === cat ? "active" : ""}`}
+            onClick={() => setSelectedGenre(cat)}
           >
             {cat}
-          </button>;
-        })}
+          </button>
+        ))}
       </div>
 
-      <div className="product-grid">
-        {filteredProducts.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            onAddToCart={onAddToCart}
-          />
+      <div className="album-grid">
+        {filteredAlbums.map((album) => (
+          <AlbumCard key={album.id} album={album} onAddToCart={onAddToCart} />
         ))}
       </div>
     </div>

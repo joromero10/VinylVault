@@ -18,7 +18,7 @@ const CartDrawer = ({ isOpen, cart, onClose, onUpdateQuantity, onRemove }) => {
 
   return (
     <div className="drawer-overlay" onClick={onClose}>
-      <aside className="drawer-panel" conClick={(e) => e.stopPPropagation()}>
+      <aside className="drawer-panel" onClick={(e) => e.stopPropagation()}>
         <div className="drawer-header">
           <button type="button" className="btn-close" onClick={onClose}>
             &times;
@@ -33,12 +33,12 @@ const CartDrawer = ({ isOpen, cart, onClose, onUpdateQuantity, onRemove }) => {
                 <li key={item.id} className="cart-item">
                   <img
                     src={item.image}
-                    alt={item.name}
+                    alt={item.title}
                     className="cart-item-img"
                   />
 
                   <div className="cart-item-info">
-                    <h4>{item.name}</h4>
+                    <h4>{item.title}</h4>
                     <p className="cart-item-price">
                       ${(item.price * item.quantity).toFixed(2)}
                     </p>

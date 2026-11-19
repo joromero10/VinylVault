@@ -5,15 +5,15 @@ const AlbumCard = ({ album, onAddToCart }) => {
   if (!album) return null;
   return (
     <article className="album-card">
-      <Link className="product-img-link" to={`/album/${album.id}`}>
-        <img src="{album.name}" alt="{album.name}" className="album-image" />
+      <Link className="album-img-link" to={`/album/${album.id}`}>
+        <img src={album.image} alt={album.title} className="album-image" />
       </Link>
       <div className="album-body">
-        <span className="album-category">{album.category}</span>
+        <span className="album-genre">{album.genre}</span>
         <h3 className="album-title">
-          <Link to={`/album/${album.id}`}>{album.name} </Link>
+          <Link to={`/album/${album.id}`}>{album.title} </Link>
         </h3>
-        <p className="product-price">
+        <p className="album-price">
           $
           {typeof album.price === "number"
             ? album.price.toFixed(2)
